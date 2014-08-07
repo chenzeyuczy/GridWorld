@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<project name="jumper" default="run" basedir=".">
+    <target name = "clean">
+        <delete file="./*.class"/>
+    </target>
+
+    <target name="compile" depends="clean">
+        <javac srcdir="." destdir=".">
+            <classpath>
+                <pathelement path="../../gridworld.jar"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="JumperRunner" fork="yes">
+            <classpath>
+                <pathelement path="../../gridworld.jar"/>
+                <pathelement path="."/>
+            </classpath>
+        </java>
+    </target>
+</project>
