@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<project name="jumper" default="run" basedir=".">
+    <property name="project_name" value="CircleBug"/>
+
+    <target name = "clean">
+        <delete file="${project_name}.class"/>
+        <delete file="${project_name}Runner.class"/>
+    </target>
+
+    <target name="compile" depends="clean">
+        <javac srcdir="." destdir=".">
+            <classpath>
+                <pathelement path="../../gridworld.jar"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="${project_name}Runner" fork="yes">
+            <classpath>
+                <pathelement path="../../gridworld.jar"/>
+                <pathelement path="."/>
+            </classpath>
+        </java>
+    </target>
+</project>

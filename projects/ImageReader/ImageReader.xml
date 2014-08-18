@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<project name="ImageReader" default="run" basedir=".">
+    <property name="project_name" value="Image"/>
+
+    <target name = "clean">
+        <delete file="${project_name}IOer.class"/>
+        <delete file="${project_name}Porcessor.class"/>
+        <delete file="${project_name}Runner.class"/>
+    </target>
+
+    <target name="compile" depends="clean">
+        <javac srcdir="." destdir=".">
+            <classpath>
+                <pathelement path="ImageReader.jar"/>
+                <pathelement path="."/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="${project_name}Runner" fork="yes">
+            <classpath>
+                <pathelement path="ImageReader.jar"/>
+                <pathelement path="."/>
+            </classpath>
+        </java>
+    </target>
+</project>
